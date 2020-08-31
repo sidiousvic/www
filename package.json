@@ -1,0 +1,24 @@
+{
+  "name": "www",
+  "version": "0.0.0",
+  "description": "www",
+  "main": "@.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "pm2 start @.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidiousvic/www.git"
+  },
+  "author": "sidiousvic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sidiousvic/www/issues"
+  },
+  "homepage": "https://github.com/sidiousvic/www#readme"
+}
