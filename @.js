@@ -2,8 +2,10 @@ const express = require("express");
 
 const app = express();
 
+app.use(express.static(__dirname + "/ui"));
+
 app.get("/", (_, res) => {
-  res.send("I'm here. 👽");
+  res.sendFile(__dirname + "/ui/index.html");
 });
 
 const port = process.env.PORT || 9000;
