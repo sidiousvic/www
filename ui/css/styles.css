@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+html {
+  padding: 1rem;
+}
+
+body {
+  animation: bounce 3s ease-in-out 0s infinite;
+}
+
+* {
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 20px;
+  background: #111;
+  color: whitesmoke;
+  cursor: grab;
+}
+
+p:hover {
+  transform: skewX(-10deg);
+  cursor: grabbing;
+}
+
+pre {
+  animation: spectrum 1s ease-in-out 0s infinite;
+}
+
+.wack {
+  animation: spectrum 1s ease-in-out 0s infinite;
+}
+
+@keyframes spectrum {
+  0% {
+    color: red;
+  }
+  50% {
+    color: rgb(132, 0, 255);
+  }
+  75% {
+    color: lime;
+  }
+  100% {
+    color: red;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
