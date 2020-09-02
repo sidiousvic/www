@@ -6,13 +6,13 @@ module.exports = function deploy(req, res) {
   const ghusername = "sidiousvic";
 
   if (branch.indexOf("prod") > -1 && sender.login === ghusername) {
-    childProcess.exec("cd /home && ./deploy.sh", function (
+    childProcess.exec(`cd ${__dirname} && sh deploy.sh`, function (
       err,
       stdout,
       stderr
     ) {
       if (err) {
-        stderr.write(`Deployment failed. ${err}`);
+        console.error("Deployment failed", err);
         return res.send(500);
       }
       res.send(200);
