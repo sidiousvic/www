@@ -1,6 +1,6 @@
-var childProcess = require("child_process");
+const childProcess = require("child_process");
 
-export default function deploy(req, res) {
+module.exports = function deploy(req, res) {
   const sender = req.body.sender;
   const branch = req.body.ref;
   const ghusername = "sidiousvic";
@@ -18,4 +18,4 @@ export default function deploy(req, res) {
       res.send(200);
     });
   }
-}
+};
