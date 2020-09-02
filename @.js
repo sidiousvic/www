@@ -8,6 +8,8 @@ app.get("/", (_, res) => {
   res.sendFile(__dirname + "/ui/index.html");
 });
 
+app.post("/webhooks/github", (_, res) => {});
+
 const port = process.env.PORT || 9000;
 
 app.listen(port, () => {
