@@ -12,7 +12,7 @@ export default function deploy(req, res) {
       stderr
     ) {
       if (err) {
-        stderr.write(`Deploymnt failed. ${err}`);
+        stderr.write(`Deployment failed. ${err}`);
         return res.send(500);
       }
       res.send(200);
