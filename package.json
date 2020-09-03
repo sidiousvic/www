@@ -9,7 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "pm2 start @.js",
+    "start": "pm2 start @.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
