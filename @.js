@@ -8,10 +8,12 @@ app.get("/", (_, res) => {
 });
 
 app.get("/teapot", (_, res) => {
-  res.send(418).set({
+  res.set({
     Accept: "application/json",
     "X-Pie-Till-I-Die": "🍕🏴‍☠️",
   });
+  res.status(418);
+  res.send("🍵");
 });
 
 const port = process.env.PORT || 9000;
