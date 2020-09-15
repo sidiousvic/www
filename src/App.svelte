@@ -50,9 +50,15 @@
       <menu-item><p>help</p></menu-item>
       <menu-item clock moveToRight><p>{time}</p></menu-item>
     </menu-bar>
-    <icon musics draggable="true" on:dragstart="{dragStart}">musics</icon>
-    <icon pics icon2 draggable="true" on:dragstart="{dragStart}">pics</icon>
-    <icon inditings draggable="true" on:dragstart="{dragStart}">inditings</icon>
+    <icon folder musics draggable="true" on:dragstart="{dragStart}"
+      ><p>musics</p></icon
+    >
+    <icon folder pics icon2 draggable="true" on:dragstart="{dragStart}"
+      ><p>pics</p></icon
+    >
+    <icon folder inditings draggable="true" on:dragstart="{dragStart}"
+      ><p>inditings</p></icon
+    >
   </main-window>
 </main>
 
@@ -71,7 +77,7 @@
     text-rendering: optimizeSpeed;
     padding: 0;
     margin: 0;
-    font-family: "Victor Mono";
+    font-family: "Dank Mono";
   }
 
   main {
@@ -99,6 +105,7 @@
     max-height: 90%;
     max-width: 90%;
     box-shadow: 10px 10px #111;
+    border: #111 2px solid;
   }
 
   menu-bar {
@@ -121,10 +128,6 @@
     background: #111;
     cursor: pointer;
     font-style: italic;
-  }
-
-  menu-item:hover {
-    font-style: normal;
   }
 
   kermitoid-logo {
@@ -150,11 +153,31 @@
   }
 
   icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 80px;
     height: 80px;
     position: absolute;
-    border: lime solid 1px;
   }
+  icon p {
+    font-size: 0.9rem;
+    font-style: oblique;
+    color: whitesmoke;
+    text-shadow: #111 1px 1px;
+    image-rendering: pixelated;
+    position: absolute;
+    bottom: 0;
+  }
+
+  [folder] {
+    background: url("./assets/folder_icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+  }
+
   [image] {
     background-repeat: no-repeat;
     background-position: center;
@@ -174,10 +197,12 @@
     top: 10%;
     left: 5%;
   }
+
   [pics] {
     top: 30%;
     left: 56%;
   }
+
   [inditings] {
     top: 79%;
     left: 35%;

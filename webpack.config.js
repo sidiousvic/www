@@ -82,7 +82,9 @@ module.exports = {
       chunkFilename: "[name].[id].css",
     }),
     new HtmlWebpackPlugin({
-      title: "VIC SIDIOUS'S WWW OF DOOM",
+      favicon: "./src/assets/favicon.ico",
+      filename: "index.html",
+      template: "./src/template.html",
     }),
   ],
 };
