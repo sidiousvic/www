@@ -1,53 +1,45 @@
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
-// ⇂ for html templating
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-// ⇂ to cleanup after build
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-// ⇂ to uglify and reduce bundle size
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const mode = process.env.NODE_ENV || "development";
+const prod = mode === "production";
 
 module.exports = {
   entry: {
-    app: "./app.svelte",
+    bundle: ["./src/main.js"],
   },
   resolve: {
     alias: {
       svelte: path.resolve("node_modules", "svelte"),
-      three$: path.resolve("./src/three.exports.js"),
+      three$: path.resolve("./src/three.x.js"),
     },
-    extensions: [".mjs", ".js", ".svelte"],
+    extensions: [".mjs", ".js", ".svelte", ".ts"],
     mainFields: ["svelte", "browser", "module", "main"],
   },
-  mode: "development",
+  mode,
   output: {
-    filename: "[name].webpacked.js",
-    path: path.resolve(__dirname, "dist"),
+    path: __dirname + "/dist",
+    filename: "[name].js",
+    chunkFilename: "[name].[id].js",
   },
-  devtool: "inline-source-map",
+  devtool: prod ? false : "source-map",
   devServer: {
-    contentBase: "./dist",
+    contentBase: __dirname + "/dist",
     hot: true,
   },
-  optimization: {
-    minimizer: [new UglifyJsPlugin()],
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "SIDIOUSVIC'S WWW OF DOOM",
-      template: "./ui/index.html",
-      filename: "./index.html",
-    }),
-    new CleanWebpackPlugin(),
-  ],
   module: {
     rules: [
       {
-        test: /\.(html|svelte)$/,
-        exclude: /node_modules/,
-        use: "svelte-loader",
+        test: /\.svelte$/,
+        use: {
+          loader: "svelte-loader",
+          options: {
+            emitCss: true,
+            hotReload: true,
+          },
+        },
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -60,7 +52,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { hmr: !prod },
+          },
+          "css-loader",
+        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -76,4 +75,10 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[name].[id].css",
+    }),
+  ],
 };
