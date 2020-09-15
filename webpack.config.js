@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const mode = process.env.NODE_ENV || "development";
 const prod = mode === "production";
@@ -79,6 +80,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[name].[id].css",
+    }),
+    new HtmlWebpackPlugin({
+      title: "VIC SIDIOUS'S WWW OF DOOM",
     }),
   ],
 };
