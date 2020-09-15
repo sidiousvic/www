@@ -4,10 +4,10 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname + "/ui"));
+app.use(express.static(__dirname + "/dist"));
 
 app.get("/", (_, res) => {
-  res.sendFile(__dirname + "/ui/index.html");
+  res.sendFile(__dirname + "/dist/index.html");
 });
 
 app.get("/%F0%9F%8D%B5", (_, res) => {
