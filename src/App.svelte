@@ -15,12 +15,10 @@
       .toLocaleLowerCase();
   }, 1000);
 
+  // drag and drop folders
   let draggingIcon;
   document.body.addEventListener("dragover", dragOver);
-  document.body.addEventListener("drop", (e) => {
-    drop(e, draggingIcon);
-  });
-
+  document.body.addEventListener("drop", drop);
   function dragStart(e) {
     draggingIcon = e.target;
     let style = window.getComputedStyle(e.target, null);
@@ -35,11 +33,12 @@
   function dragOver(e) {
     e.preventDefault();
   }
-  function drop(e, icon) {
-    e.preventDefault();
+  function drop(e) {
     let offset = event.dataTransfer.getData("text/plain").split(",");
-    icon.style.left = e.clientX + parseInt(offset[0], 10) + "px";
-    icon.style.top = e.clientY + parseInt(offset[1], 10) + "px";
+    if (draggingIcon) {
+      draggingIcon.style.left = e.clientX + parseInt(offset[0], 10) + "px";
+      draggingIcon.style.top = e.clientY + parseInt(offset[1], 10) + "px";
+    }
   }
 </script>
 
@@ -86,7 +85,14 @@
 
   main {
     background: var(--redorange);
-    background-size: cover;
+    background: linear-gradient(
+      45deg,
+      #fff,
+      var(--redorange) 50%,
+      var(--redorange) 50%,
+      #000
+    );
+    background-size: 2px 2px;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -174,12 +180,17 @@
     bottom: 0;
   }
 
+  [clock] {
+    font-style: normal;
+  }
+
   [folder] {
     background: url("./assets/folder_icon.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     cursor: pointer;
+    image-rendering: optimizeSpeed;
   }
 
   [image] {
