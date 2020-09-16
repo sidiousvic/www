@@ -1,9 +1,13 @@
 <!-- logic -->
 <script>
+  // run the clock
   let time = "👽";
   setInterval(() => {
     time = new Date()
-      .toLocaleTimeString(navigator.language, {
+      .toLocaleDateString("ja-JP", {
+        weekday: "long",
+        month: "long",
+        year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
