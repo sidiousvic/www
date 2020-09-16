@@ -25,7 +25,7 @@ module.exports = {
   devtool: prod ? false : "source-map",
   devServer: {
     contentBase: __dirname + "/dist",
-    hot: true,
+    // hot: true,
   },
   module: {
     rules: [
