@@ -28,8 +28,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "start": "pm2 start @.js",
-    "server": "nodemon @.js",
+    "start": "pm2 start server.js",
+    "server": "nodemon server.js",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
