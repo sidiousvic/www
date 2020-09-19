@@ -6,14 +6,13 @@ const prod = mode === "production";
 
 module.exports = {
   entry: {
-    bundle: ["./src/main.js"],
+    bundle: ["./src/main.ts"],
   },
   resolve: {
     alias: {
-      svelte: path.resolve("node_modules", "svelte"),
       three$: path.resolve("./src/three.x.js"),
     },
-    extensions: [".mjs", ".js", ".svelte", ".ts"],
+    extensions: [".mjs", ".js", ".ts"],
     mainFields: ["svelte", "browser", "module", "main"],
   },
   mode,
@@ -32,16 +31,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.svelte$/,
-        use: {
-          loader: "svelte-loader",
-          options: {
-            emitCss: true,
-            hotReload: true,
-          },
-        },
-      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
