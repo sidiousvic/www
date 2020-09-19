@@ -25,6 +25,9 @@ module.exports = {
   devtool: prod ? false : "source-map",
   devServer: {
     contentBase: __dirname + "/dist",
+    proxy: {
+      "/graphql": "http://localhost:9999",
+    },
     // hot: true,
   },
   module: {
