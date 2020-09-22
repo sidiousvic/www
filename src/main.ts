@@ -1,4 +1,6 @@
 import "./styles.css";
+//@ts-ignore
+import folder_icon from "./assets/folder_icon.png";
 import App from "./App";
 
 // render app
@@ -23,6 +25,9 @@ function dragStart(e: Event) {
       "," +
       (parseInt(style.getPropertyValue("top"), 10) - (e as DragEvent).clientY)
   );
+  const img = document.createElement("img");
+  img.src = folder_icon;
+  (e as DragEvent).dataTransfer!.setDragImage(img, 40, 34.5);
 }
 function dragOver(e: Event) {
   e.preventDefault();

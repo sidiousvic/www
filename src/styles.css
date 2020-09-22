@@ -52,18 +52,18 @@ body {
 }
 
 #musics {
-  top: 40%;
-  left: 60%;
+  top: 70%;
+  left: 30%;
 }
 
 #inditings {
   top: 50%;
-  left: 70%;
+  left: 50%;
 }
 
 #pics {
   top: 60%;
-  left: 60%;
+  left: 80%;
 }
 
 /* Window */
@@ -77,7 +77,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: top;
-  background: url("./assets/mojave_lowres.png");
+  background-image: url("./assets/mojave_lowres.png");
   height: 90%;
   width: 90%;
   min-height: 40px;
@@ -135,10 +135,12 @@ body {
   line-height: 100%;
 }
 
-#clock {
+/* sos-clock {
+  padding: 0 10px;
+  color: whitesmoke;
   font-style: normal;
   margin-left: auto;
-}
+} */
 
 #os-title {
   font-style: normal;
