@@ -29,7 +29,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "start": "pm2 start server.js",
+    "start": "pm2 start server.js --name sidiousvic.dev",
     "server": "nodemon server.js",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "webpack-dev-server",
