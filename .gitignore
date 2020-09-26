@@ -2,3 +2,6 @@ node_modules
 deploy.sh
 dist/
 npm-debug.log
+
+# subdirs
+oats/
