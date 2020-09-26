@@ -17,13 +17,13 @@ module.exports = {
   },
   mode,
   output: {
-    path: __dirname + "/dist",
+    path: __dirname + "/build",
     filename: "[name].js",
     chunkFilename: "[name].[id].js",
   },
   devtool: prod ? false : "source-map",
   devServer: {
-    contentBase: __dirname + "/dist",
+    contentBase: __dirname + "/build",
     proxy: {
       "/graphql": "http://localhost:9999",
     },
@@ -33,7 +33,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: ["/node_modules/", "/oats/", "/spiders/"],
         use: {
           loader: "babel-loader",
         },
@@ -41,11 +41,11 @@ module.exports = {
       {
         test: /\.ts?$/,
         loader: "ts-loader",
-        exclude: /node_modules/,
+        exclude: ["/node_modules/", "/oats/", "/spiders/"],
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        exclude: ["/node_modules/", "/oats/", "/spiders/"],
         use: [
           {
             loader: MiniCssExtractPlugin.loader,

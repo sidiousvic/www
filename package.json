@@ -33,7 +33,6 @@
     "server": "nodemon server.js",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "update": "npm run build && npm run start"
   },
   "repository": {
@@ -45,5 +44,12 @@
   "bugs": {
     "url": "https://github.com/sidiousvic/www/issues"
   },
-  "homepage": "https://github.com/sidiousvic/www#readme"
+  "homepage": "https://github.com/sidiousvic/www#readme",
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/oats/",
+      "/spiders/"
+    ]
+  }
 }
