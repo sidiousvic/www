@@ -22,5 +22,5 @@ app.use("/x", xRouter);
 const port = 9999;
 
 app.listen(port, () => {
-  console.log(`Server running @ PORT ${port}`);
+  console.log(`Server fired @ PORT ${port}`);
 });
