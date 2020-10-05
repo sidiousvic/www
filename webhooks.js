@@ -25,15 +25,16 @@ async function deploy(res, service) {
       ? "./deploy.sh"
       : `cd ${service} && ./deploy.sh`;
 
-  exec(`${runDeployScript}`, (err) => {
+  exec(`${runDeployScript}`, (err, stdout) => {
     if (err) {
       console.log(`⚠️ ${service} was unable to deploy.`);
       console.log(err);
       return res.sendStatus(500);
     }
+    console.log(`stdout: ${stdout}`);
+    console.log(`⚙ ${service} has been deployed!`);
+    return res.sendStatus(200);
   });
-  console.log(`⚙ ${service} has been deployed!`);
-  return res.sendStatus(200);
 }
 
 module.exports = webhookRouter;
