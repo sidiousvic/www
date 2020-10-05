@@ -3,8 +3,9 @@ var webhookRouter = express.Router();
 var childProcess = require("child_process");
 var githubUsername = "sidiousvic";
 
-webhookRouter.use(function timelog(req, res, next) {
-  console.log("Webhook @ ", Date.now());
+webhookRouter.use(function timelog(req, _, next) {
+  const reqUrl = req.path;
+  console.log("Webhook @ ", reqUrl, Date.now().toLocaleString());
   next();
 });
 
