@@ -13,7 +13,9 @@ webhookRouter.post("/build/:service", async (req, res) => {
   const { sender, ref } = req.body;
   const { service } = req.params;
   if (ref.indexOf("prod") > -1 && sender.login === githubUsername) {
+    console.log("🔧 Running deploy script...");
     await deploy(res, service);
+    console.log(`⚙ ${service} has been deployed!`);
   }
 });
 
@@ -24,11 +26,10 @@ async function deploy(res, service) {
       : `cd ${service} && ./deploy.sh`;
   try {
     await exec(`${runDeployScript}`);
-    console.log("🔧 Running deploy script...");
-    return res.sendStatus(200).send(`⚙ ${service} has been deployed!`);
+    res.status(200).send(`⚙ ${service} has been deployed!`);
   } catch (err) {
     console.log(err);
-    res.sendStatus(500).send(`⚠️ ${service} was unable to deploy. `);
+    res.status(500).send(`⚠️ ${service} was unable to deploy. `);
   }
 }
 
