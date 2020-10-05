@@ -1,6 +1,6 @@
 var express = require("express");
 var webhookRouter = express.Router();
-var childProcess = require("child_process");
+var c_p = require("child_process");
 var githubUsername = "sidiousvic";
 
 webhookRouter.use(function timelog(req, _, next) {
@@ -13,7 +13,7 @@ webhookRouter.post("/build/:service", async (req, res) => {
   const { sender, ref } = req.body;
   const { service } = req.params;
   if (ref.indexOf("prod") > -1 && sender.login === githubUsername) {
-    return await deploy(res, service);
+    await deploy(res, service);
   }
 });
 
@@ -22,12 +22,27 @@ async function deploy(res, service) {
     service === "sidiousvicdev"
       ? "./deploy.sh"
       : `cd ${service} && ./deploy.sh`;
-  childProcess.exec(`${runDeployScript}`, (err) => {
-    if (err) {
-      console.error(err);
-      return res.sendStatus(500).send(`${service} was unable to deploy. 💥`);
-    }
-    return res.sendStatus(200).send(`${service} has been deployed! ⚙️`);
+  try {
+    await exec(`${runDeployScript}`);
+    return res.sendStatus(200).send(`${service} has been deployed! ⚙`);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500).send(`${service} was unable to deploy. 💥`);
+  }
+}
+
+function exec(command, options = { log: false, cwd: process.cwd() }) {
+  if (options.log) console.log(command);
+  return new Promise((done, failed) => {
+    c_p.exec(command, { ...options }, (err, stdout, stderr) => {
+      if (err) {
+        err.stdout = stdout;
+        err.stderr = stderr;
+        failed(err);
+        throw new Error("⚠️ There was an error executing the deploy script.");
+      }
+      done({ stdout, stderr });
+    });
   });
 }
 
