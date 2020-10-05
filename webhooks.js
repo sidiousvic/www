@@ -8,7 +8,7 @@ webhookRouter.use(function timelog(req, res, next) {
   next();
 });
 
-webhookRouter.post("/", function (req, res) {
+webhookRouter.post("/", (req, res) => {
   const { sender, ref } = req.body;
   if (ref.indexOf("prod") > -1 && sender.login === githubUsername) deploy(res);
 });
@@ -17,9 +17,9 @@ function deploy(res) {
   childProcess.exec("cd spiders && ./deploy.sh", (err) => {
     if (err) {
       console.error(err);
-      return res.send(500);
+      return res.status(500).send("Spiders was unable to fire.");
     }
-    res.send(200);
+    res.status(200).send("Spiders has been fired up!");
   });
 }
 
