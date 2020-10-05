@@ -26,8 +26,10 @@ async function deploy(res, service) {
       : `cd ${service} && ./deploy.sh`;
 
   exec(`${runDeployScript}`, (err) => {
-    console.log(err);
-    return res.status(500).send(`⚠️ ${service} was unable to deploy. `);
+    if (err) {
+      console.log(err);
+      return res.status(500).send(`⚠️ ${service} was unable to deploy. `);
+    }
   });
   return res.status(200).send(`⚙ ${service} has been deployed!`);
 }
