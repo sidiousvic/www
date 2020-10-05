@@ -5,7 +5,7 @@ var githubUsername = "sidiousvic";
 
 webhookRouter.use(function timelog(req, _, next) {
   const { path: reqUrl } = req;
-  console.log("Webhook @ ", reqUrl, Date.now().toLocaleString());
+  console.log("Webhook @ ", reqUrl, new Date());
   next();
 });
 
