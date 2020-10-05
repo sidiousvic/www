@@ -14,7 +14,7 @@ webhookRouter.post("/build/:service", async (req, res) => {
   const { sender, ref } = req.body;
   const { service } = req.params;
   if (ref.indexOf("prod") > -1 && sender.login === githubUsername) {
-    console.log("🔧 Running deploy script...");
+    console.log(`🔧 Running ${service} deploy script...`);
     await deploy(res, service);
   }
 });
