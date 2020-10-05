@@ -4,6 +4,8 @@ const webhooksRouter = require("./webhooks");
 const bodyParser = require("body-parser");
 const app = express();
 
+app.use(bodyParser.json());
+
 xRouter.get("/areyouthere", (_, res) => {
   res.send("I'm here. 👽");
 });
@@ -16,8 +18,6 @@ xRouter.get("/%F0%9F%8D%B5", (_, res) => {
 xRouter.use("/webhooks", webhooksRouter);
 
 app.use("/x", xRouter);
-
-app.use(bodyParser.json());
 
 const port = 9999;
 
