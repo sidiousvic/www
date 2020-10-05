@@ -5,15 +5,16 @@ var githubUsername = "sidiousvic";
 
 webhookRouter.use(function timelog(req, _, next) {
   const { path: reqUrl } = req;
-  console.log("Webhook @ ", reqUrl, new Date());
+  console.log("Webhook @", reqUrl, new Date());
   next();
 });
 
 webhookRouter.post("/build/:service", async (req, res) => {
   const { sender, ref } = req.body;
   const { service } = req.params;
-  if (ref.indexOf("prod") > -1 && sender.login === githubUsername)
-    await deploy(res, service);
+  if (ref.indexOf("prod") > -1 && sender.login === githubUsername) {
+    return await deploy(res, service);
+  }
 });
 
 async function deploy(res, service) {
@@ -24,9 +25,9 @@ async function deploy(res, service) {
   childProcess.exec(`${runDeployScript}`, (err) => {
     if (err) {
       console.error(err);
-      return res.status(500).send(`${service} was unable to deploy. 💥`);
+      return res.sendStatus(500).send(`${service} was unable to deploy. 💥`);
     }
-    return res.status(200).send(`${service} has been deployed! ⚙️`);
+    return res.sendStatus(200).send(`${service} has been deployed! ⚙️`);
   });
 }
 
