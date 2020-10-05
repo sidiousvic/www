@@ -10,6 +10,7 @@ webhookRouter.use(function timelog(req, _, next) {
 });
 
 webhookRouter.post("/build/:service", async (req, res) => {
+  req.connection.setTimeout(99999);
   const { sender, ref } = req.body;
   const { service } = req.params;
   if (ref.indexOf("prod") > -1 && sender.login === githubUsername) {
