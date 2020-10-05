@@ -5,7 +5,7 @@ var githubUsername = "sidiousvic";
 
 webhookRouter.use(function timelog(req, _, next) {
   const { path: reqUrl } = req;
-  console.log("Webhook @", reqUrl, new Date().now);
+  console.log("Webhook @", reqUrl, new Date().now());
   next();
 });
 
@@ -24,10 +24,10 @@ async function deploy(res, service) {
       : `cd ${service} && ./deploy.sh`;
   try {
     await exec(`${runDeployScript}`);
-    return res.sendStatus(200).send(`${service} has been deployed! ⚙`);
+    return res.sendStatus(200).send(`⚙ ${service} has been deployed!`);
   } catch (err) {
     console.log(err);
-    res.sendStatus(500).send(`${service} was unable to deploy. 💥`);
+    res.sendStatus(500).send(`⚠️ ${service} was unable to deploy. `);
   }
 }
 
@@ -41,6 +41,7 @@ function exec(command, options = { log: false, cwd: process.cwd() }) {
         failed(err);
         throw new Error("⚠️ There was an error executing the deploy script.");
       }
+      console.log("🔨 Command executed.");
       done({ stdout, stderr });
     });
   });
