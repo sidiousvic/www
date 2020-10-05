@@ -29,11 +29,11 @@ async function deploy(res, service) {
     if (err) {
       console.log(`⚠️ ${service} was unable to deploy.`);
       console.log(err);
-      return res.status(500);
+      return res.sendStatus(500);
     }
   });
   console.log(`⚙ ${service} has been deployed!`);
-  return res.send(200);
+  return res.sendStatus(200);
 }
 
 module.exports = webhookRouter;
