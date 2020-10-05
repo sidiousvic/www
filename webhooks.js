@@ -17,10 +17,11 @@ webhookRouter.post("/build/:service", async (req, res) => {
 });
 
 async function deploy(res, service) {
-  const cdSubServiceCommand =
-    service === "sidiousvic.dev" ? "" : `cd ${service} &&`;
-  console.log(service, cdSubServiceCommand);
-  childProcess.exec(`${cdSubServiceCommand} ./deploy.sh`, (err) => {
+  const runDeployScript =
+    service === "sidiousvicdev"
+      ? "./deploy.sh"
+      : `cd ${service} && ./deploy.sh`;
+  childProcess.exec(`${runDeployScript}`, (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send(`${service} was unable to deploy. 💥`);
