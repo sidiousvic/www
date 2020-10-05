@@ -19,6 +19,7 @@ webhookRouter.post("/build/:service", async (req, res) => {
 async function deploy(res, service) {
   const cdSubServiceCommand =
     service === "sidiousvic.dev" ? "" : `cd ${service} &&`;
+  console.log(service, cdSubServiceCommand);
   childProcess.exec(`${cdSubServiceCommand} ./deploy.sh`, (err) => {
     if (err) {
       console.error(err);
