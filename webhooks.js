@@ -10,21 +10,21 @@ webhookRouter.use(function timelog(req, _, next) {
   next();
 });
 
-webhookRouter.post("/build/:service", async (req, res) => {
+webhookRouter.post("/build/:service", (req, res) => {
   const { sender, ref } = req.body;
   const { service } = req.params;
   if (ref.indexOf("prod") > -1 && sender.login === githubUsername) {
     console.log(`🔩 Running ${service} deploy script...`);
-    await deploy(service);
-    return res.status(200).send("🔧 Deploy has been triggered. ");
-  } else return res.status(500).send("😵 Deploy was unable to trigger. ");
+    deploy(service);
+    res.status(200).send("🔧 Deploy has been triggered. ");
+  } else return res.status(500).send("😵 Deploy was not triggered. ");
 });
 
 async function deploy(service) {
   const runDeployScript =
     service === "sidiousvic" ? "./deploy.sh" : `cd ${service} && ./deploy.sh`;
 
-  const { stdout, stderr } = await exec(`${runDeployScript}`);
+  const { stdout, stderr } = exec(`${runDeployScript}`);
   console.log(`${stdout}`);
   console.error(`${stderr}`);
 }
