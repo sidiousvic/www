@@ -24,12 +24,10 @@ async function deploy(service) {
   const runDeployScript =
     service === "sidiousvic" ? "./deploy.sh" : `cd ${service} && ./deploy.sh`;
   const child = await exec("pwd");
-  const { stdout, stderr } = child;
-  child.on("exit", (code) => {
-    console.error(stderr);
-    console.log(stdout);
-    console.log(code, "exited");
-  });
+  const { err, stdout, stderr } = child;
+  console.error(err);
+  console.log(stdout);
+  console.log(stderr);
 }
 
 deploy("sidiousvic");
