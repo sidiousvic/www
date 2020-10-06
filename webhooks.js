@@ -25,8 +25,8 @@ function deploy(service) {
 
   exec(`${runDeployScript}`, (err, stdout) => {
     if (err) {
-      console.log(`⚠️ ${service} was unable to deploy.`);
-      console.log(err);
+      console.error(`⚠️ ${service} was unable to deploy.`);
+      console.error(err);
     }
 
     console.log(`${stdout}`);
