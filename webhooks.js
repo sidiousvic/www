@@ -20,7 +20,8 @@ webhookRouter.post("/build/:service", (req, res) => {
 });
 
 function deploy(service) {
-  if (service !== "sidiousvic") const cd = `cd ${service} `;
+  const cd;
+  if (service !== "sidiousvic") cd = `cd ${service} `;
   console.log("Pulling...");
   spawn(`${cd}git pull`);
   console.log("Deploying...");
