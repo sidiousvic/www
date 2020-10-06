@@ -8,7 +8,7 @@ class sMenuBar extends HTMLElement {
     this.innerHTML = this.innerHTML;
   }
 
-  items: string[] = ["THIS WWWXY IS UNDER CONSTRUCTION 🏴‍☠️ GITHUB/SIDIOUSVIC"];
+  items: string[] = ["THIS WWWZ IS UNDER CONSTRUCTION 🏴‍☠️ GITHUB/SIDIOUSVIC"];
 
   innerHTML = html`
     <div class="img" id="kermitoid-logo"></div>
