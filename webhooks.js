@@ -22,9 +22,11 @@ webhookRouter.post("/build/:service", (req, res) => {
 function deploy(service) {
   const runDeployScript =
     service === "sidiousvic" ? "./deploy.sh" : `cd ${service} && ./deploy.sh`;
-  exec(`${runDeployScript}`, (err, stdout, stderr) => {
+  const child = exec(`${runDeployScript}`, (err, stdout, stderr) => {
     console.log(err ? stderr : stdout);
   });
+
+  child.on("exit", (code) => console.log(code, "exited"));
 }
 
 module.exports = webhookRouter;
