@@ -15,11 +15,11 @@ webhookRouter.post("/build/:service", async (req, res) => {
   if (ref.indexOf("prod") > -1 && sender.login === githubUsername) {
     console.log(`🔩 Running ${service} deploy script...`);
     res.sendStatus(200).send("🔧 Deploy has been triggered. ");
-    deploy(res, service);
+    deploy(service);
   }
 });
 
-function deploy(res, service) {
+function deploy(service) {
   const runDeployScript =
     service === "sidiousvic" ? "./deploy.sh" : `cd ${service} && ./deploy.sh`;
 
@@ -27,7 +27,6 @@ function deploy(res, service) {
     if (err) {
       console.log(`⚠️ ${service} was unable to deploy.`);
       console.log(err);
-      return res.sendStatus(500);
     }
     console.log(`${stdout}`);
   });
