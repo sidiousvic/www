@@ -27,8 +27,8 @@ async function deploy(service) {
       : `cd ${service} && sh ./deploy.sh`;
   const child = await exec(runDeployScript);
   const { stdout, stderr } = child;
-  console.log(stdout);
-  console.log(stderr);
+  console.log(`${stdout}`);
+  console.log(`${stderr}`);
 }
 
 module.exports = webhookRouter;
