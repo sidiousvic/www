@@ -19,7 +19,7 @@ webhookRouter.post("/build/:service", (req, res) => {
   } else res.status(500).send("😵 Deploy was not triggered. ");
 });
 
-async function deploy(service) {
+function deploy(service) {
   if (service !== "sidiousvic") const cd = `cd ${service} `;
   console.log("Pulling...");
   spawn(`${cd}git pull`);
