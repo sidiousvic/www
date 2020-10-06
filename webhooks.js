@@ -1,6 +1,7 @@
 const express = require("express");
 const webhookRouter = express.Router();
-const { spawn } = require("child_process");
+const u = require("util");
+const exec = u.promisify(require("child_process").exec);
 const githubUsername = "sidiousvic";
 
 webhookRouter.use(function timelog(req, _, next) {
@@ -19,14 +20,15 @@ webhookRouter.post("/build/:service", (req, res) => {
   } else res.status(500).send("😵 Deploy was not triggered. ");
 });
 
-function deploy(service) {
-  let cd = "";
-  if (service !== "sidiousvic") cd = `cd ${service} `;
-  console.log("Pulling...");
-  spawn(`${cd}git pull`);
-  console.log("Deploying...");
-  spawn(`${cd}npm run deploy`);
-  console.log("Done!");
+async function deploy(service) {
+  const runDeployScript =
+    service === "sidiousvic" ? "./deploy.sh" : `cd ${service} && ./deploy.sh`;
+  console.log(runDeployScript, "👽");
+  const child = await exec("echo 🍕");
+  const { err, stdout, stderr } = child;
+  console.error(err);
+  console.log(stdout);
+  console.log(stderr);
 }
 
 deploy("sidiousvic");
