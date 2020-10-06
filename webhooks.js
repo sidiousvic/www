@@ -24,7 +24,7 @@ async function deploy(service) {
   const runDeployScript =
     service === "sidiousvic" ? "./deploy.sh" : `cd ${service} && ./deploy.sh`;
 
-  const { stdout, stderr } = exec(`${runDeployScript}`);
+  const { stdout, stderr } = await exec(`${runDeployScript}`);
   console.log(`${stdout}`);
   console.error(`${stderr}`);
 }
