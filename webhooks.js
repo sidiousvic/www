@@ -1,6 +1,6 @@
 const express = require("express");
 const webhookRouter = express.Router();
-const spawn = require("child_process");
+const { spawn } = require("child_process");
 const githubUsername = "sidiousvic";
 
 webhookRouter.use(function timelog(req, _, next) {
