@@ -10,16 +10,16 @@ webhookRouter.use(function timelog(req, _, next) {
 });
 
 webhookRouter.post("/build/:service", async (req, res) => {
-  req.connection.setTimeout(99999);
   const { sender, ref } = req.body;
   const { service } = req.params;
   if (ref.indexOf("prod") > -1 && sender.login === githubUsername) {
-    console.log(`🔧 Running ${service} deploy script...`);
-    await deploy(res, service);
+    console.log(`🔩 Running ${service} deploy script...`);
+    res.sendStatus(200).send("🔧 Deploy has been triggered. ");
+    deploy(res, service);
   }
 });
 
-async function deploy(res, service) {
+function deploy(res, service) {
   const runDeployScript =
     service === "sidiousvicdev"
       ? "./deploy.sh"
@@ -31,9 +31,7 @@ async function deploy(res, service) {
       console.log(err);
       return res.sendStatus(500);
     }
-    console.log(`stdout: ${stdout}`);
-    console.log(`⚙ ${service} has been deployed!`);
-    return res.sendStatus(200);
+    console.log(`${stdout}`);
   });
 }
 
