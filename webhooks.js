@@ -17,6 +17,7 @@ webhookRouter.post("/build/:service", async (req, res) => {
     res.sendStatus(200).send("🔧 Deploy has been triggered. ");
     deploy(service);
   }
+  res.sendStatus(500).send("😵 Deploy was unable to trigger. ");
 });
 
 function deploy(service) {
@@ -28,6 +29,7 @@ function deploy(service) {
       console.log(`⚠️ ${service} was unable to deploy.`);
       console.log(err);
     }
+
     console.log(`${stdout}`);
   });
 }
