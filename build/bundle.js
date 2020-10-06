@@ -1,9 +1,343 @@
-!function(e){var t={};function n(i){if(t[i])return t[i].exports;var o=t[i]={i:i,l:!1,exports:{}};return e[i].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,i){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:i})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var i=Object.create(null);if(n.r(i),Object.defineProperty(i,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(i,o,function(t){return e[t]}.bind(null,o));return i},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=1)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e,...t){return String.raw(e,t)}},function(e,t,n){e.exports=n(2)},function(e,t,n){"use strict";var i=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),n(3);const o=i(n(4)),r=i(n(5));document.body.innerHTML=r.default();function s(e){const t=e.target;t.classList.add("dragging-icon");const n=window.getComputedStyle(t,null);e.dataTransfer.setData("text/plain",parseInt(n.getPropertyValue("left"),10)-e.clientX+","+(parseInt(n.getPropertyValue("top"),10)-e.clientY));const i=document.createElement("img");i.src=o.default,e.dataTransfer.setDragImage(i,40,34.5)}[...document.getElementsByClassName("desktop-icon")].map(e=>{e.addEventListener("dragstart",s)}),document.body.addEventListener("dragover",(function(e){e.preventDefault()})),document.body.addEventListener("drop",(function(e){const t=e.dataTransfer.getData("text/plain").split(","),n=document.getElementsByClassName("dragging-icon")[0];n.style.left=e.clientX+parseInt(t[0],10)+"px",n.style.top=e.clientY+parseInt(t[1],10)+"px",n.classList.remove("dragging-icon")}))},function(e,t,n){},function(e,t,n){"use strict";n.r(t),t.default=n.p+"749cbc1ff2b691cb67d1044a510a4cf6.png"},function(e,t,n){"use strict";var i=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});const o=i(n(6));t.default=function(){return`<div id="main">${o.default()}</div>\n  `}},function(e,t,n){"use strict";var i=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),n(7);const o=i(n(9));t.default=function(){return`\n  <div id="window" class="img">\n    <s-menu-bar/>\n    ${o.default({id:"musics",type:"folder",text:"musics"})}\n    ${o.default({id:"pics",type:"folder",text:"pics"})}\n    ${o.default({id:"inditings",type:"folder",text:"inditings"})}\n  </div >\n  `}},function(e,t,n){"use strict";var i=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),n(8);const o=i(n(0));class r extends HTMLElement{constructor(){super(),this.items=["THIS WWW IS UNDER CONSTRUCTION 🏴‍☠️ GITHUB/SIDIOUSVIC"],this.innerHTML=o.default`
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/App.ts":
+/*!********************!*\
+  !*** ./src/App.ts ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const Window_1 = __importDefault(__webpack_require__(/*! ./Window */ "./src/Window.ts"));
+function App() {
+    return `<div id="main">${Window_1.default()}</div>
+  `;
+}
+exports.default = App;
+
+
+/***/ }),
+
+/***/ "./src/DesktopIcon.ts":
+/*!****************************!*\
+  !*** ./src/DesktopIcon.ts ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function DesktopIcon({ id, type, text, }) {
+    return `
+    <div 
+      id=${id} 
+      class="desktop-icon ${type}" 
+      draggable="true">
+        <p>${text}</p>
+    </div>
+`;
+}
+exports.default = DesktopIcon;
+
+
+/***/ }),
+
+/***/ "./src/Window.ts":
+/*!***********************!*\
+  !*** ./src/Window.ts ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(/*! ./s-menu-bar */ "./src/s-menu-bar.ts");
+const DesktopIcon_1 = __importDefault(__webpack_require__(/*! ./DesktopIcon */ "./src/DesktopIcon.ts"));
+function Window() {
+    return `
+  <div id="window" class="img">
+    <s-menu-bar/>
+    ${DesktopIcon_1.default({ id: "musics", type: "folder", text: "musics" })}
+    ${DesktopIcon_1.default({ id: "pics", type: "folder", text: "pics" })}
+    ${DesktopIcon_1.default({ id: "inditings", type: "folder", text: "inditings" })}
+  </div >
+  `;
+}
+exports.default = Window;
+
+
+/***/ }),
+
+/***/ "./src/assets/folder_icon.png":
+/*!************************************!*\
+  !*** ./src/assets/folder_icon.png ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "749cbc1ff2b691cb67d1044a510a4cf6.png");
+
+/***/ }),
+
+/***/ "./src/html.ts":
+/*!*********************!*\
+  !*** ./src/html.ts ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function html(html, ...placeholders) {
+    return String.raw(html, placeholders);
+}
+exports.default = html;
+
+
+/***/ }),
+
+/***/ "./src/main.ts":
+/*!*********************!*\
+  !*** ./src/main.ts ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(/*! ./styles.css */ "./src/styles.css");
+//@ts-ignore
+const folder_icon_png_1 = __importDefault(__webpack_require__(/*! ./assets/folder_icon.png */ "./src/assets/folder_icon.png"));
+const App_1 = __importDefault(__webpack_require__(/*! ./App */ "./src/App.ts"));
+// render app
+document.body.innerHTML = App_1.default();
+// add dragging functionality
+const desktopIcons = document.getElementsByClassName("desktop-icon");
+[...desktopIcons].map((desktopIcon) => {
+    desktopIcon.addEventListener("dragstart", dragStart);
+});
+document.body.addEventListener("dragover", dragOver);
+document.body.addEventListener("drop", drop);
+function dragStart(e) {
+    const draggingIcon = e.target;
+    draggingIcon.classList.add("dragging-icon");
+    const style = window.getComputedStyle(draggingIcon, null);
+    e.dataTransfer.setData("text/plain", parseInt(style.getPropertyValue("left"), 10) -
+        e.clientX +
+        "," +
+        (parseInt(style.getPropertyValue("top"), 10) - e.clientY));
+    const img = document.createElement("img");
+    img.src = folder_icon_png_1.default;
+    e.dataTransfer.setDragImage(img, 40, 34.5);
+}
+function dragOver(e) {
+    e.preventDefault();
+}
+function drop(e) {
+    const offset = e.dataTransfer.getData("text/plain").split(",");
+    const draggingIcon = document.getElementsByClassName("dragging-icon")[0];
+    draggingIcon.style.left = e.clientX + parseInt(offset[0], 10) + "px";
+    draggingIcon.style.top = e.clientY + parseInt(offset[1], 10) + "px";
+    draggingIcon.classList.remove("dragging-icon");
+}
+
+
+/***/ }),
+
+/***/ "./src/s-clock.ts":
+/*!************************!*\
+  !*** ./src/s-clock.ts ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const html_1 = __importDefault(__webpack_require__(/*! ./html */ "./src/html.ts"));
+class sClock extends HTMLElement {
+    constructor() {
+        super();
+        this.styles();
+        this.logic();
+    }
+    logic() {
+        return setInterval(() => {
+            this.innerHTML = this.time;
+        }, 1000);
+    }
+    styles() {
+        const shadowRoot = this.attachShadow({ mode: "open" });
+        shadowRoot.innerHTML = html_1.default `
+      <slot></slot>
+      <style>
+        :host {
+          padding: 0 10px;
+          color: whitesmoke;
+          font-style: normal;
+          margin-left: auto;
+        }
+      </style>
+    `;
+    }
+    get time() {
+        const dateOptions = {
+            weekday: "long",
+            month: "long",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+        };
+        return new Date()
+            .toLocaleDateString("ja-JP", dateOptions)
+            .toLocaleLowerCase();
+    }
+}
+customElements.define("s-clock", sClock);
+
+
+/***/ }),
+
+/***/ "./src/s-menu-bar.ts":
+/*!***************************!*\
+  !*** ./src/s-menu-bar.ts ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(/*! ./s-clock */ "./src/s-clock.ts");
+const html_1 = __importDefault(__webpack_require__(/*! ./html */ "./src/html.ts"));
+class sMenuBar extends HTMLElement {
+    constructor() {
+        super();
+        this.items = ["THIS WWWX IS UNDER CONSTRUCTION 🏴‍☠️ GITHUB/SIDIOUSVIC"];
+        this.innerHTML = html_1.default `
     <div class="img" id="kermitoid-logo"></div>
     <div class="menu-item" id="os-title"><p>Sidi OS</p></div>
-    ${this.items.map(e=>o.default`<div class="menu-item"><p>${e}</p></div>`)}
+    ${this.items.map((item) => {
+            return html_1.default `<div class="menu-item"><p>${item}</p></div>`;
+        })}
     <s-clock>👽</s-clock>
-  `,this.styles(),this.innerHTML=this.innerHTML}styles(){this.attachShadow({mode:"open"}).innerHTML=o.default`
+  `;
+        this.styles();
+        this.innerHTML = this.innerHTML;
+    }
+    styles() {
+        const shadowRoot = this.attachShadow({ mode: "open" });
+        shadowRoot.innerHTML = html_1.default `
       <slot></slot>
       <style>
         :host {
@@ -56,14 +390,38 @@
           font-size: 1.2em;
         }
       </style>
-    `}}customElements.define("s-menu-bar",r)},function(e,t,n){"use strict";var i=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});const o=i(n(0));class r extends HTMLElement{constructor(){super(),this.styles(),this.logic()}logic(){return setInterval(()=>{this.innerHTML=this.time},1e3)}styles(){this.attachShadow({mode:"open"}).innerHTML=o.default`
-      <slot></slot>
-      <style>
-        :host {
-          padding: 0 10px;
-          color: whitesmoke;
-          font-style: normal;
-          margin-left: auto;
-        }
-      </style>
-    `}get time(){return(new Date).toLocaleDateString("ja-JP",{weekday:"long",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit",second:"2-digit"}).toLocaleLowerCase()}}customElements.define("s-clock",r)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function({id:e,type:t,text:n}){return`\n    <div \n      id=${e} \n      class="desktop-icon ${t}" \n      draggable="true">\n        <p>${n}</p>\n    </div>\n`}}]);
+    `;
+    }
+}
+customElements.define("s-menu-bar", sMenuBar);
+
+
+/***/ }),
+
+/***/ "./src/styles.css":
+/*!************************!*\
+  !*** ./src/styles.css ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
+
+/***/ }),
+
+/***/ 0:
+/*!***************************!*\
+  !*** multi ./src/main.ts ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./src/main.ts */"./src/main.ts");
+
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=bundle.js.map
