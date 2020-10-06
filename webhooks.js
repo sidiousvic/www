@@ -14,7 +14,7 @@ webhookRouter.post("/build/:service", (req, res) => {
   const { sender, ref } = req.body;
   const { service } = req.params;
   if (ref.indexOf("prod") > -1 && sender.login === githubUsername) {
-    console.log(`🔩 Running ${service} deploy script...`);
+    console.log(`🔩 Triggering ${service} deploy...`);
     deploy(service);
     res.status(200).send("🔧 Deploy has been triggered. ");
   } else res.status(500).send("😵 Deploy was not triggered. ");
