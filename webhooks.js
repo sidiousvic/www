@@ -23,7 +23,8 @@ webhookRouter.post("/build/:service", (req, res) => {
 async function deploy(service) {
   const runDeployScript =
     service === "sidiousvic" ? "./deploy.sh" : `cd ${service} && ./deploy.sh`;
-  const child = await exec("pwd");
+  const child = await exec("./deploy.sh && pwd");
+  console.log(child);
   const { err, stdout, stderr } = child;
   console.error(err);
   console.log(stdout);
