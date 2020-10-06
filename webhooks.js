@@ -21,9 +21,7 @@ webhookRouter.post("/build/:service", async (req, res) => {
 
 function deploy(res, service) {
   const runDeployScript =
-    service === "sidiousvicdev"
-      ? "./deploy.sh"
-      : `cd ${service} && ./deploy.sh`;
+    service === "sidiousvic" ? "./deploy.sh" : `cd ${service} && ./deploy.sh`;
 
   exec(`${runDeployScript}`, (err, stdout) => {
     if (err) {
