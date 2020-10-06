@@ -29,11 +29,10 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "fire": "npm ci && npm run build && NODE_ENV=production pm2 restart server.js --name sidiousvic.dev",
+    "deploy": "npm ci && npm run build && NODE_ENV=production pm2 restart server.js --name sidiousvic.dev",
     "server": "nodemon server.js",
     "build": "webpack",
-    "dev": "webpack-dev-server",
-    "update": "npm run build && npm run start"
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",

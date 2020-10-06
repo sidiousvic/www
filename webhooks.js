@@ -17,17 +17,21 @@ webhookRouter.post("/build/:service", (req, res) => {
     console.log(`🔩 Running ${service} deploy script...`);
     deploy(service);
     res.status(200).send("🔧 Deploy has been triggered. ");
-  } else return res.status(500).send("😵 Deploy was not triggered. ");
+  } else res.status(500).send("😵 Deploy was not triggered. ");
 });
 
 async function deploy(service) {
+  console.log("I'");
   const runDeployScript =
     service === "sidiousvic" ? "./deploy.sh" : `cd ${service} && ./deploy.sh`;
   console.log(runDeployScript);
-  const child = await exec(`${runDeployScript}`);
-  const { stdout, stderr } = child;
-  console.log(`${stdout}`);
-  console.error(`${stderr}`);
+  try {
+    const child = await exec(`${runDeployScript}`);
+    const { err, stdout, stderr } = child;
+    console.log(err ? stderr : stdout);
+  } catch (err) {
+    console.log(err, "at the catch");
+  }
 }
 
 module.exports = webhookRouter;
