@@ -25,8 +25,7 @@ async function deploy(service) {
     service === "sidiousvic"
       ? "sh ./deploy.sh"
       : `cd ${service} && sh ./deploy.sh`;
-  const { child } = await exec(deployScript);
-  console.log(child);
+  await exec(deployScript);
 }
 
 module.exports = webhookRouter;
