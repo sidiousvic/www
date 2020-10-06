@@ -31,6 +31,4 @@ async function deploy(service) {
   console.log(stderr);
 }
 
-deploy("sidiousvic");
-
 module.exports = webhookRouter;
