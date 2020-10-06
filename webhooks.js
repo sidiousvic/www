@@ -22,11 +22,11 @@ webhookRouter.post("/build/:service", (req, res) => {
 
 async function deploy(service) {
   const runDeployScript =
-    service === "sidiousvic" ? "./deploy.sh" : `cd ${service} && ./deploy.sh`;
-  console.log(runDeployScript, "👽");
-  const child = await exec(`sh ${runDeployScript}`);
-  const { err, stdout, stderr } = child;
-  console.error(err);
+    service === "sidiousvic"
+      ? "sh ./deploy.sh"
+      : `cd ${service} && sh ./deploy.sh`;
+  const child = await exec(runDeployScript);
+  const { stdout, stderr } = child;
   console.log(stdout);
   console.log(stderr);
 }
