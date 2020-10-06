@@ -1,7 +1,8 @@
-var express = require("express");
-var webhookRouter = express.Router();
+const express = require("express");
+const webhookRouter = express.Router();
+const util = require("util");
 const exec = util.promisify(require("child_process").exec);
-var githubUsername = "sidiousvic";
+const githubUsername = "sidiousvic";
 
 webhookRouter.use(function timelog(req, _, next) {
   const { path: reqUrl } = req;
