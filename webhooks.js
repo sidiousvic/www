@@ -1,6 +1,7 @@
 const express = require("express");
 const webhookRouter = express.Router();
-const { exec } = require("child_process");
+const u = require("util");
+const exec = u.promisify(require("child_process").exec);
 const githubUsername = "sidiousvic";
 
 webhookRouter.use(function timelog(req, _, next) {
@@ -24,10 +25,9 @@ async function deploy(service) {
     service === "sidiousvic"
       ? "sh ./deploy.sh"
       : `cd ${service} && sh ./deploy.sh`;
-  const child = exec(runDeployScript);
-  const { stdout, stderr } = child;
-  console.log(`${stdout}`);
-  console.error(`${stderr}`);
+  const { stdout, stderr } = await exec(runDeployScript);
+  console.log(stdout);
+  console.log(stderr);
 }
 
 module.exports = webhookRouter;
