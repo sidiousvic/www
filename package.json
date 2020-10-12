@@ -30,7 +30,7 @@
   },
   "scripts": {
     "deploy": "npm ci && npm run build && NODE_ENV=production pm2 restart server.js --name sidiousvic.dev",
-    "server": "nodemon server.js",
+    "server": "NODE_ENV=development nodemon server.js",
     "build": "webpack",
     "dev": "webpack-dev-server"
   },
