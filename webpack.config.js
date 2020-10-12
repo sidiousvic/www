@@ -33,7 +33,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: ["/node_modules/", "/oats/", "/spiders/"],
+        exclude: ["/node_modules/", "/spiders/"],
         use: {
           loader: "babel-loader",
         },
@@ -41,11 +41,11 @@ module.exports = {
       {
         test: /\.ts?$/,
         loader: "ts-loader",
-        exclude: ["/node_modules/", "/oats/", "/spiders/"],
+        exclude: ["/node_modules/", "/spiders/"],
       },
       {
         test: /\.css$/,
-        exclude: ["/node_modules/", "/oats/", "/spiders/"],
+        exclude: ["/node_modules/", "/spiders/"],
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
