@@ -41,11 +41,11 @@ module.exports = {
       {
         test: /\.ts?$/,
         loader: "ts-loader",
-        exclude: ["/node_modules/", "/spiders/"],
+        exclude: ["/node_modules/", "/projects/", "/spiders/"],
       },
       {
         test: /\.css$/,
-        exclude: ["/node_modules/", "/spiders/"],
+        exclude: ["/node_modules/", "/projects/", "/spiders/"],
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
