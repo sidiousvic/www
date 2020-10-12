@@ -10,7 +10,7 @@ webhookRouter.use(function timelog(req, _, next) {
   next();
 });
 
-webhookRouter.post("/build/:service", (req, res) => {
+webhookRouter.post("/build/:service", function triggerDeploy(req, res) {
   const { sender, ref } = req.body;
   const { service } = req.params;
   if (ref.indexOf("prod") > -1 && sender.login === githubUsername) {
