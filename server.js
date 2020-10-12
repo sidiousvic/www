@@ -16,6 +16,7 @@ xRouter.get("/%F0%9F%8D%B5", (_, res) => {
   res.send("🍓𝟙𝒆");
 });
 
+xRouter.options("/%E2%98%95", cors(), (_, res) => res.send());
 xRouter.get("/%E2%98%95", (_, res) => {
   res.status(418);
   res.send(`
@@ -54,7 +55,7 @@ xRouter.get("/%E2%98%95", (_, res) => {
 
 xRouter.use("/webhooks", webhooksRouter);
 
-app.use("/x", cors(), xRouter);
+app.use("/x", xRouter);
 
 const port = 9999;
 
