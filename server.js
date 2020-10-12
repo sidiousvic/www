@@ -11,13 +11,12 @@ xRouter.get("/areyouthere", (_, res) => {
   res.send("I'm here! 👽");
 });
 
-xRouter.get("/%F0%9F%8D%B5", cors(), (_, res) => {
+xRouter.get("/%F0%9F%8D%B5", (_, res) => {
   res.status(200);
   res.send("🍓𝟙𝒆");
 });
 
-xRouter.get("/%E2%98%95", cors(), (_, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+xRouter.get("/%E2%98%95", (_, res) => {
   res.status(418);
   res.send(`
   <html>
@@ -55,7 +54,7 @@ xRouter.get("/%E2%98%95", cors(), (_, res) => {
 
 xRouter.use("/webhooks", webhooksRouter);
 
-app.use("/x", xRouter);
+app.use("/x", cors(), xRouter);
 
 const port = 9999;
 
