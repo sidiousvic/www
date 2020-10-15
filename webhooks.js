@@ -10,21 +10,17 @@ webhookRouter.use(function timelog(req, _, next) {
   next();
 });
 
-webhookRouter.post("/build/:service", function triggerDeploy(req, res) {
+webhookRouter.post("/build", function triggerDeploy(req, res) {
   const { sender, ref } = req.body;
-  const { service } = req.params;
   if (ref.indexOf("prod") > -1 && sender.login === githubUsername) {
-    console.log(`🔩 Triggering ${service} deploy...`);
-    deploy(service);
+    console.log(`🔩 Triggering sidiousvic.dev deploy...`);
+    deploy();
     res.status(200).send("🔧 Deploy has been triggered. ");
   } else res.status(500).send("😵 Deploy was not triggered. ");
 });
 
-async function deploy(service) {
-  const deployScript =
-    service === "sidiousvic"
-      ? "sh ./deploy.sh"
-      : `cd ${service} && sh ./deploy.sh`;
+async function deploy() {
+  const deployScript = "sh ./deploy.sh";
   await exec(deployScript);
 }
 
