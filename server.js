@@ -52,9 +52,9 @@ xRouter.get("/%E2%98%95", (_, res) => {
   `);
 });
 
-xRouter.use("/webhooks", webhooksRouter);
+xRouter.use("/webhooks", cors(), webhooksRouter);
 
-app.use("/x", cors(), xRouter);
+app.use("/x", xRouter);
 
 const port = 9999;
 
